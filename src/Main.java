@@ -4,30 +4,21 @@ import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        Barn barn = new Barn(new BulkTank());
-        System.out.println("Barn: " + barn);
-
+        Farm farm = new Farm("Esko", new Barn(new BulkTank()));
         MilkingRobot robot = new MilkingRobot();
-        barn.installMilkingRobot(robot);
+        farm.installMilkingRobot(robot);
 
-        Cow ammu = new Cow();
-        ammu.liveHour();
-        ammu.liveHour();
+        farm.addCow(new Cow());
+        farm.addCow(new Cow());
+        farm.addCow(new Cow());
 
-        barn.takeCareOf(ammu);
-        System.out.println("Barn: " + barn);
 
-        LinkedList<Cow> cowList = new LinkedList<Cow>();
-        cowList.add(ammu);
-        cowList.add(new Cow());
+        farm.liveHour();
+        farm.liveHour();
 
-        for (Cow cow : cowList) {
-            cow.liveHour();
-            cow.liveHour();
-        }
+        farm.manageCows();
 
-        barn.takeCareOf(cowList);
-        System.out.println("Barn: " + barn);
+        System.out.println(farm);
     }
 }
 
